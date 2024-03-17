@@ -7,22 +7,39 @@
 
 import UIKit
 import RxFlow
+import RxCocoa
+import RxSwift
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCenterDelegate {
 
+    let disposeBag = DisposeBag()
     var window: UIWindow?
+    var coordinator = FlowCoordinator()
+//    let appServices = AppServices()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.backgroundColor = .white
+        guard let window = window else { return }
+        
+        print("@@@@@@")
 
-        let window = UIWindow(windowScene: windowScene)
-        let navigationController = UINavigationController()
-        let appCoordinator = HomeCoordinator(navigationController: navigationController)
-        appCoordinator.start()
+        self.coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
+            print("did navigate to flow=\(flow) and step=\(step)")
+        }).disposed(by: self.disposeBag)
+        let appFlow = AppFlow(window: window)
 
-        window.rootViewController = navigationController
-        self.window = window
-        window.makeKeyAndVisible()
+        self.coordinator.coordinate(flow: appFlow, with: AppStepper())
+
+        Flows.use(appFlow, when: .created) { root in
+            window.rootViewController = root
+            window.makeKeyAndVisible()
+        }
+
+        UNUserNotificationCenter.current().delegate = self
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

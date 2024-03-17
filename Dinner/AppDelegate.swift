@@ -6,32 +6,12 @@
 //
 
 import UIKit
-import RxFlow
-import RxSwift
-import RxCocoa
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    let disposeBag = DisposeBag()
-    var window: UIWindow?
-    var coordinator = FlowCoordinator()
-//    let appServices = AppServices()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        guard let window = self.window else { return false }
-        
-        // listening for the coordination mechanism is not mandatory, but can be useful
-        coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
-            print ("did navigate to flow=\(flow) and step=\(step)")
-        }).disposed(by: self.disposeBag)
-
-//        let appFlow = AppFlow(withWindow: window, andServices: self.appServices)
-        
-//        self.coordinator.coordinate(flow: self.appFlow,
-//                                    with: AppStepper(withServices: self.appServices))
-
-        
+        // Override point for customization after application launch.
         return true
     }
 

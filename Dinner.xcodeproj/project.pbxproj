@@ -25,6 +25,16 @@
 		86992EF72BA4256D00322DC3 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992EF62BA4256D00322DC3 /* Services.swift */; };
 		86992EF92BA4257800322DC3 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992EF82BA4257800322DC3 /* Entities.swift */; };
 		86992EFB2BA4258000322DC3 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992EFA2BA4258000322DC3 /* ViewModels.swift */; };
+		86992F2B2BA6D9FD00322DC3 /* AppSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F2A2BA6D9FD00322DC3 /* AppSteps.swift */; };
+		86992F2D2BA6DA5300322DC3 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F2C2BA6DA5300322DC3 /* AppStepper.swift */; };
+		86992F2F2BA6DB6700322DC3 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F2E2BA6DB6700322DC3 /* AppFlow.swift */; };
+		86992F312BA6DD9C00322DC3 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F302BA6DD9C00322DC3 /* MainFlow.swift */; };
+		86992F332BA6DEB600322DC3 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F322BA6DEB600322DC3 /* TestViewModel.swift */; };
+		86992F352BA6DF1900322DC3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F342BA6DF1900322DC3 /* DetailViewController.swift */; };
+		86992F382BA6E42900322DC3 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 86992F372BA6E42900322DC3 /* Then */; };
+		86992F3A2BA6E47300322DC3 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F392BA6E47300322DC3 /* DetailViewModel.swift */; };
+		86992F492BA7053300322DC3 /* ViewModelBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F482BA7053300322DC3 /* ViewModelBased.swift */; };
+		86992F4C2BA7058A00322DC3 /* Reusable in Frameworks */ = {isa = PBXBuildFile; productRef = 86992F4B2BA7058A00322DC3 /* Reusable */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +49,14 @@
 		86992EF62BA4256D00322DC3 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		86992EF82BA4257800322DC3 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		86992EFA2BA4258000322DC3 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
+		86992F2A2BA6D9FD00322DC3 /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
+		86992F2C2BA6DA5300322DC3 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
+		86992F2E2BA6DB6700322DC3 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		86992F302BA6DD9C00322DC3 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
+		86992F322BA6DEB600322DC3 /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
+		86992F342BA6DF1900322DC3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		86992F392BA6E47300322DC3 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		86992F482BA7053300322DC3 /* ViewModelBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBased.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +69,12 @@
 				86992EEA2BA4214400322DC3 /* OpenAI in Frameworks */,
 				86992EED2BA4220800322DC3 /* RxFlow in Frameworks */,
 				86992EE72BA4213300322DC3 /* RxRelay in Frameworks */,
+				86992F382BA6E42900322DC3 /* Then in Frameworks */,
 				86992EE32BA4213300322DC3 /* RxCocoa in Frameworks */,
 				86992EDC2BA4211600322DC3 /* SnapKit-Dynamic in Frameworks */,
 				86992EE52BA4213300322DC3 /* RxCocoa-Dynamic in Frameworks */,
 				86992EE12BA4213300322DC3 /* RxBlocking-Dynamic in Frameworks */,
+				86992F4C2BA7058A00322DC3 /* Reusable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				86992EC82BA40C3E00322DC3 /* ViewController.swift */,
+				86992F342BA6DF1900322DC3 /* DetailViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				86992EFA2BA4258000322DC3 /* ViewModels.swift */,
+				86992F322BA6DEB600322DC3 /* TestViewModel.swift */,
+				86992F392BA6E47300322DC3 /* DetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -122,6 +145,11 @@
 			isa = PBXGroup;
 			children = (
 				86992EF32BA423AC00322DC3 /* HomeCoordinator.swift */,
+				86992F2A2BA6D9FD00322DC3 /* AppSteps.swift */,
+				86992F2C2BA6DA5300322DC3 /* AppStepper.swift */,
+				86992F2E2BA6DB6700322DC3 /* AppFlow.swift */,
+				86992F302BA6DD9C00322DC3 /* MainFlow.swift */,
+				86992F482BA7053300322DC3 /* ViewModelBased.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -160,6 +188,8 @@
 				86992EE62BA4213300322DC3 /* RxRelay */,
 				86992EE92BA4214400322DC3 /* OpenAI */,
 				86992EEC2BA4220800322DC3 /* RxFlow */,
+				86992F372BA6E42900322DC3 /* Then */,
+				86992F4B2BA7058A00322DC3 /* Reusable */,
 			);
 			productName = TestProject;
 			productReference = 86992EC12BA40C3E00322DC3 /* Dinner.app */;
@@ -194,6 +224,8 @@
 				86992EDD2BA4213300322DC3 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				86992EE82BA4214400322DC3 /* XCRemoteSwiftPackageReference "OpenAI" */,
 				86992EEB2BA4220800322DC3 /* XCRemoteSwiftPackageReference "RxFlow" */,
+				86992F362BA6E42900322DC3 /* XCRemoteSwiftPackageReference "Then" */,
+				86992F4A2BA7058A00322DC3 /* XCRemoteSwiftPackageReference "Reusable" */,
 			);
 			productRefGroup = 86992EC22BA40C3E00322DC3 /* Products */;
 			projectDirPath = "";
@@ -222,10 +254,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				86992EF92BA4257800322DC3 /* Entities.swift in Sources */,
+				86992F2B2BA6D9FD00322DC3 /* AppSteps.swift in Sources */,
 				86992EF72BA4256D00322DC3 /* Services.swift in Sources */,
+				86992F2F2BA6DB6700322DC3 /* AppFlow.swift in Sources */,
 				86992EF42BA423AC00322DC3 /* HomeCoordinator.swift in Sources */,
+				86992F2D2BA6DA5300322DC3 /* AppStepper.swift in Sources */,
+				86992F332BA6DEB600322DC3 /* TestViewModel.swift in Sources */,
 				86992EC92BA40C3E00322DC3 /* ViewController.swift in Sources */,
 				86992EC52BA40C3E00322DC3 /* AppDelegate.swift in Sources */,
+				86992F3A2BA6E47300322DC3 /* DetailViewModel.swift in Sources */,
+				86992F492BA7053300322DC3 /* ViewModelBased.swift in Sources */,
+				86992F312BA6DD9C00322DC3 /* MainFlow.swift in Sources */,
+				86992F352BA6DF1900322DC3 /* DetailViewController.swift in Sources */,
 				86992EFB2BA4258000322DC3 /* ViewModels.swift in Sources */,
 				86992EC72BA40C3E00322DC3 /* SceneDelegate.swift in Sources */,
 			);
@@ -474,6 +514,22 @@
 				minimumVersion = 2.13.0;
 			};
 		};
+		86992F362BA6E42900322DC3 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		86992F4A2BA7058A00322DC3 /* XCRemoteSwiftPackageReference "Reusable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/Reusable.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -521,6 +577,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 86992EEB2BA4220800322DC3 /* XCRemoteSwiftPackageReference "RxFlow" */;
 			productName = RxFlow;
+		};
+		86992F372BA6E42900322DC3 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86992F362BA6E42900322DC3 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		86992F4B2BA7058A00322DC3 /* Reusable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86992F4A2BA7058A00322DC3 /* XCRemoteSwiftPackageReference "Reusable" */;
+			productName = Reusable;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

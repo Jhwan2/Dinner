@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Article {
+    let id = UUID()
+    var title: String
+}
