@@ -11,7 +11,12 @@ import RxCocoa
 import RxSwift
 
 struct ViewControllerViewModel: Stepper {
-    var steps: RxRelay.PublishRelay<RxFlow.Step>
+    var steps: PublishRelay<Step> = .init()
+    
+    var initialStep: Step {
+        return AppSteps.homeIsRequired
+    }
+    
     
     
     

@@ -23,8 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         window?.windowScene = windowScene
         window?.backgroundColor = .white
         guard let window = window else { return }
-        
-        print("@@@@@@")
 
         self.coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
             print("did navigate to flow=\(flow) and step=\(step)")
@@ -37,8 +35,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
             window.rootViewController = root
             window.makeKeyAndVisible()
         }
-
-        UNUserNotificationCenter.current().delegate = self
         
     }
 

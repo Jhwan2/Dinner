@@ -7,10 +7,10 @@
 
 import UIKit
 import Reusable
-
-protocol ViewModelBased: AnyObject {
-    associatedtype ViewModel
-    var viewModel: ViewModel! { get set }
-    func bindViewModel(viewModel: ArticleViewModel)
-}
+//
+//protocol ViewModelBased: AnyObject {
+//    associatedtype ViewModel
+//    var viewModel: ViewModel! { get set }
+//    func bindViewModel(viewModel: ArticleViewModel)
+//}
 

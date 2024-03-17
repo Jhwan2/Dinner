@@ -12,13 +12,14 @@ import UIKit
 
 final class AppFlow: Flow {
     let window: UIWindow!
-  
+    let navigation = UINavigationController()
+    var viewMdoel = ArticleViewModel()
     init(window: UIWindow) {
         self.window = window
     }
     
     var root: Presentable {
-        return self.window
+        return self.navigation
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -34,16 +35,22 @@ final class AppFlow: Flow {
     
     private func navigateToHomeFlow() -> FlowContributors {
         print(#function)
-        let viewModel = ArticleViewModel()
-        let mainFlow = MainFlow(viewModel: viewModel)
-        Flows.use(mainFlow, when: .created) { root in
-            self.window.rootViewController = root
-        }
-        return .one(flowContributor: .contribute(withNextPresentable: mainFlow, withNextStepper: viewModel))
+//        let viewModel = ArticleViewModel()
+//        let mainFlow = MainFlow(viewModel: viewModel)
+//        Flows.use(mainFlow, when: .created) { root in
+//            self.window.rootViewController = root
+//        }
+        let vc = ViewController()
+        vc.bindViewModel(viewModel: self.viewMdoel)
+//        self.window.rootViewController
+        self.navigation.setViewControllers([vc], animated: false)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: self.viewMdoel))
     }
         
     private func navigateToDetailFlow() -> FlowContributors {
-        return .none
+        let vc = DetailViewController()
+        self.navigation.pushViewController(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: self.viewMdoel))
     }
 
 }

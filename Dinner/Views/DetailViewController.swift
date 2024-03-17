@@ -9,19 +9,11 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    let viewModel: DetailViewModel
-    
-    init(viewModel: DetailViewModel) {
-        self.viewModel = viewModel
-        super.init()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    let viewModel: DetailViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .yellow
         // Do any additional setup after loading the view.
     }
 }
