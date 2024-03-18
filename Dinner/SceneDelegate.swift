@@ -23,11 +23,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         window?.windowScene = windowScene
         window?.backgroundColor = .white
         guard let window = window else { return }
-
+        
+        self.coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
+            print("will navigate to flow=\(flow) and step=\(step)")
+        }).disposed(by: self.disposeBag)
+        
         self.coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
             print("did navigate to flow=\(flow) and step=\(step)")
         }).disposed(by: self.disposeBag)
-        let appFlow = AppFlow(window: window)
+        
+        let appFlow = AppFlow()
 
         self.coordinator.coordinate(flow: appFlow, with: AppStepper())
 

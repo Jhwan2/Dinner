@@ -10,14 +10,11 @@ import RxFlow
 import RxCocoa
 import RxSwift
 
-struct ViewControllerViewModel: Stepper {
+struct LeftoverViewModel: Stepper {
     var steps: PublishRelay<Step> = .init()
     
     var initialStep: Step {
-        return AppSteps.homeIsRequired
+        return LeftoverStep.leftoverHomeIsRequired
     }
-    
-    
-    
     
 }
