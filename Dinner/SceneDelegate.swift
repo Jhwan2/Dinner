@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 
     let disposeBag = DisposeBag()
     var window: UIWindow?
-    var coordinator = FlowCoordinator()
+    var coordinator = FlowCoordinator() // Flow의 묶음 앱전체의 흐름 제어
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -25,15 +25,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         
         self.coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
             print("did navigate to flow=\(flow) and step=\(step)")
-        }).disposed(by: self.disposeBag)
+        }).disposed(by: self.disposeBag) // Flow 및 Step 확인용 log
         
-        let appFlow = AppFlow()
+        let appFlow = AppFlow() // 가장큰 앱 단위의 AppFlow생성
 
-        self.coordinator.coordinate(flow: appFlow, with: TestStepper())
+        self.coordinator.coordinate(flow: appFlow, with: TestStepper()) // appflow의 초기 step 설정
         
-        Flows.use(appFlow, when: .created) { root in
-            window.rootViewController = root
-            window.makeKeyAndVisible()
+        Flows.use(appFlow, when: .created) { root in // appFlow 시작
+            window.rootViewController = root // appFlow 내부에 있는 navigationController를 앱 rootViewController 으로 설정
+            window.makeKeyAndVisible() //기본 window 셋팅
         }
         
     }

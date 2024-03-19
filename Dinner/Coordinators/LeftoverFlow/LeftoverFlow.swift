@@ -10,11 +10,11 @@ import RxCocoa
 import RxSwift
 import RxFlow
 
-class LeftoverFlow: Flow {
+class LeftoverFlow: Flow { //남은재료Flow
     
     private var navigationController = UINavigationController()
     
-    let viewModel: LeftoverViewModel
+    let viewModel: LeftoverViewModel //구색맞추기용 + Stepper역할
     
     init(viewModel: LeftoverViewModel) {
         self.viewModel = viewModel
@@ -38,7 +38,7 @@ class LeftoverFlow: Flow {
     
     private func homeVCPresent() -> FlowContributors {
         print(#function)
-        let vc = DetailViewController()
+        let vc = DetailViewController() // 테스트용 VC
         self.navigationController.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: OneStepper(withSingleStep: LeftoverStep.leftoverHomeIsRequired)))
     }

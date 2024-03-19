@@ -17,7 +17,7 @@ final class HomeFlow: Flow {
         return self.navigationController
     }
     
-    private lazy var navigationController = UINavigationController()
+    private var navigationController = UINavigationController()
     
     
     func navigate(to step: Step) -> RxFlow.FlowContributors {
@@ -66,8 +66,7 @@ final class HomeFlow: Flow {
         let viewModel = LeftoverViewModel()
         let leftoverFlow = LeftoverFlow(viewModel: viewModel)
         Flows.use(leftoverFlow, when: .created) { [unowned self] root in
-            guard let root = root as? UINavigationController else { return print("네비 안넘어감")}
-            self.navigationController = root
+            self.navigationController.present(root, animated: true)
         }
         return .one(flowContributor: .contribute(withNextPresentable: leftoverFlow, withNextStepper: OneStepper(withSingleStep: LeftoverStep.leftoverHomeIsRequired)))
     }
