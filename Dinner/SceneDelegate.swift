@@ -15,7 +15,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
     let disposeBag = DisposeBag()
     var window: UIWindow?
     var coordinator = FlowCoordinator()
-//    let appServices = AppServices()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -24,18 +23,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         window?.backgroundColor = .white
         guard let window = window else { return }
         
-        self.coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
-            print("will navigate to flow=\(flow) and step=\(step)")
-        }).disposed(by: self.disposeBag)
-        
         self.coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
             print("did navigate to flow=\(flow) and step=\(step)")
         }).disposed(by: self.disposeBag)
         
         let appFlow = AppFlow()
 
-        self.coordinator.coordinate(flow: appFlow, with: AppStepper())
-
+        self.coordinator.coordinate(flow: appFlow, with: TestStepper())
+        
         Flows.use(appFlow, when: .created) { root in
             window.rootViewController = root
             window.makeKeyAndVisible()

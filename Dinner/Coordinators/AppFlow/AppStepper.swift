@@ -13,6 +13,16 @@ import RxCocoa
 final class AppStepper: Stepper {
     var steps: PublishRelay<Step> = .init()
     var initialStep: Step {
+        return HomeSteps.homeIsRequired // 불렷을 때 처음으로 소환되는 Step
+    }
+    func readyToEmitSteps() {
+        
+    }
+}
+
+final class TestStepper: Stepper {
+    var steps: PublishRelay<Step> = .init()
+    var initialStep: Step {
         return AppSteps.homeIsRequired // 불렷을 때 처음으로 소환되는 Step
     }
     func readyToEmitSteps() {

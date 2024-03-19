@@ -34,6 +34,8 @@
 		86992F3A2BA6E47300322DC3 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F392BA6E47300322DC3 /* DetailViewModel.swift */; };
 		86992F4C2BA7058A00322DC3 /* Reusable in Frameworks */ = {isa = PBXBuildFile; productRef = 86992F4B2BA7058A00322DC3 /* Reusable */; };
 		86992F4F2BA813F100322DC3 /* LeftoverStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F4E2BA813F100322DC3 /* LeftoverStep.swift */; };
+		86992F522BA949B300322DC3 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F512BA949B300322DC3 /* HomeFlow.swift */; };
+		86992F542BA94AE200322DC3 /* HomeSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86992F532BA94AE200322DC3 /* HomeSteps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		86992F342BA6DF1900322DC3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		86992F392BA6E47300322DC3 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		86992F4E2BA813F100322DC3 /* LeftoverStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverStep.swift; sourceTree = "<group>"; };
+		86992F512BA949B300322DC3 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
+		86992F532BA94AE200322DC3 /* HomeSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSteps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,8 @@
 			children = (
 				86992F502BA8275E00322DC3 /* LeftoverFlow */,
 				86992F4D2BA7C39100322DC3 /* AppFlow */,
+				86992F512BA949B300322DC3 /* HomeFlow.swift */,
+				86992F532BA94AE200322DC3 /* HomeSteps.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -268,11 +274,13 @@
 			files = (
 				86992F4F2BA813F100322DC3 /* LeftoverStep.swift in Sources */,
 				86992EF92BA4257800322DC3 /* Entities.swift in Sources */,
+				86992F542BA94AE200322DC3 /* HomeSteps.swift in Sources */,
 				86992F2B2BA6D9FD00322DC3 /* AppSteps.swift in Sources */,
 				86992EF72BA4256D00322DC3 /* Services.swift in Sources */,
 				86992F2F2BA6DB6700322DC3 /* AppFlow.swift in Sources */,
 				86992F2D2BA6DA5300322DC3 /* AppStepper.swift in Sources */,
 				86992F332BA6DEB600322DC3 /* TestViewModel.swift in Sources */,
+				86992F522BA949B300322DC3 /* HomeFlow.swift in Sources */,
 				86992EC92BA40C3E00322DC3 /* ViewController.swift in Sources */,
 				86992EC52BA40C3E00322DC3 /* AppDelegate.swift in Sources */,
 				86992F3A2BA6E47300322DC3 /* DetailViewModel.swift in Sources */,

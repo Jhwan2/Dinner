@@ -6,49 +6,39 @@
 //
 
 import RxFlow
-import RxCocoa
-import RxSwift
 import UIKit
 
 final class AppFlow: Flow {
-    private lazy var navigationController = UINavigationController()
-    var disposeBag = DisposeBag()
-    var viewMdoel = ArticleViewModel()
     
     var root: Presentable {
-        return self.navigationController
+        return self.rootViewController
     }
     
+    private lazy var rootViewController = UINavigationController()
+    
     func navigate(to step: Step) -> FlowContributors {
-        print(#function)
-        guard let step = step as? AppSteps else { return FlowContributors.none }
+        guard let step = step as? AppSteps else { return .none }
+        rootViewController.navigationItem.title = "AppFlow"
         switch step {
         case .homeIsRequired:
             return navigateToHomeFlow()
-        case .deliveryIsRequired:
-            return navigateToDeliveryFlow()
-        case .leftoverIsRequired:
-            return navigateToLeftoverFlow()
+        case .OnboardingIsRequired:
+            return navigateToOnboardingFlow()
         }
     }
     
     private func navigateToHomeFlow() -> FlowContributors {
-        print(#function)
         
-        let vc = ViewController()
-        vc.bindViewModel(viewModel: viewMdoel)
+        let homeFlow = HomeFlow()
+        Flows.use(homeFlow, when: .created) { [unowned self] root in
+            guard let root = root as? UINavigationController else { return }
+            self.rootViewController = root
+        }
         
-        Driver.just("now is HomeStep in AppFlow")
-            .drive(onNext: { st in
-                vc.testlabel.text = st
-            })
-            .disposed(by: disposeBag)
-        
-        self.navigationController.pushViewController(vc, animated: false)
-        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: viewMdoel))
+        return .one(flowContributor: .contribute(withNextPresentable: homeFlow, withNextStepper: OneStepper(withSingleStep: HomeSteps.homeIsRequired)))
     }
         
-    private func navigateToDeliveryFlow() -> FlowContributors {
+    private func navigateToOnboardingFlow() -> FlowContributors {
 //        let viewModel = ArticleViewModel()
 //        let mainFlow = MainFlow(viewModel: viewModel)
 //        Flows.use(mainFlow, when: .created) { root in
@@ -56,17 +46,6 @@ final class AppFlow: Flow {
 //        }
 //        return .one(flowContributor: .contribute(withNextPresentable: mainFlow, withNextStepper: viewModel))
         return .none
-    }
-    
-    private func navigateToLeftoverFlow() -> FlowContributors {
-        let viewModel = LeftoverViewModel()
-        let leftoverFlow = LeftoverFlow(viewModel: viewModel)
-        Flows.use(leftoverFlow, when: .created) { [unowned self] root in
-            DispatchQueue.main.async {
-                self.navigationController.pushViewController(root, animated: false)
-            }
-        }
-        return .one(flowContributor: .contribute(withNextPresentable: leftoverFlow, withNextStepper: viewModel))
     }
 
 }

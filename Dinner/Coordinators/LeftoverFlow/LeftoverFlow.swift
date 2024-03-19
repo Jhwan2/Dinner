@@ -12,7 +12,7 @@ import RxFlow
 
 class LeftoverFlow: Flow {
     
-    let navigationController = UINavigationController()
+    private var navigationController = UINavigationController()
     
     let viewModel: LeftoverViewModel
     
@@ -26,6 +26,7 @@ class LeftoverFlow: Flow {
     
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? LeftoverStep else { return .none }
+        navigationController.navigationItem.title = "LeftFlow"
         switch step {
         case .leftoverHomeIsRequired:
             return homeVCPresent()
@@ -36,22 +37,16 @@ class LeftoverFlow: Flow {
     }
     
     private func homeVCPresent() -> FlowContributors {
-        let disposeBag = DisposeBag()
         print(#function)
-        let vc = ViewController()
-//        vc.bindViewModel(viewModel: viewModel)
-        Driver.just("now is home in Leftover")
-            .drive { st in
-                vc.testlabel.text = st
-            }.disposed(by: disposeBag)
-        self.navigationController.setViewControllers([vc], animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: viewModel))
+        let vc = DetailViewController()
+        self.navigationController.pushViewController(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: OneStepper(withSingleStep: LeftoverStep.leftoverHomeIsRequired)))
     }
     
     private func nextVCPresent() -> FlowContributors {
         let vc = DetailViewController()
         vc.view.backgroundColor = .white
-        self.navigationController.pushViewController(vc, animated: true)
+        self.navigationController.present(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: viewModel))
     }
 }
