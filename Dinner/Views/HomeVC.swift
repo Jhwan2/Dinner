@@ -13,14 +13,14 @@ import RxCocoa
 import Then
 import SnapKit
 
-class ViewController: UIViewController {
+class HomeVC: UIViewController {
     var disposeBag = DisposeBag()
     
     let testlabel = UILabel()
     let button = UIButton(type: .system)
     let button2 = UIButton(type: .system)
     
-    var viewModel: ArticleViewModel!
+    var viewModel: HomeVM!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,20 +55,20 @@ class ViewController: UIViewController {
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
                 print("버튼눌렷어 1번")
-                self.viewModel.steps.accept(HomeSteps.leftoverIsRequired)
+                self.viewModel.steps.accept(AppSteps.leftoverIsRequired)
             }
             .disposed(by: disposeBag)
         
         button2.rx.tap
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
-                self.viewModel.steps.accept(HomeSteps.homeIsRequired)
+                self.viewModel.steps.accept(AppSteps.homeIsRequired)
             }
             .disposed(by: disposeBag)
         
     }
     
-    func bindViewModel(viewModel: ArticleViewModel) {
+    func bindViewModel(viewModel: HomeVM) {
         self.viewModel = viewModel
     }
 

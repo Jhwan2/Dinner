@@ -12,9 +12,9 @@ import RxFlow
 
 class LeftoverFlow: Flow { //남은재료Flow
     
-    private var navigationController = UINavigationController()
+    private let navigationController = UINavigationController()
     
-    let viewModel: LeftoverViewModel //구색맞추기용 + Stepper역할
+    let viewModel: LeftoverViewModel // Stepper역할
     
     init(viewModel: LeftoverViewModel) {
         self.viewModel = viewModel
@@ -38,15 +38,16 @@ class LeftoverFlow: Flow { //남은재료Flow
     
     private func homeVCPresent() -> FlowContributors {
         print(#function)
-        let vc = DetailViewController() // 테스트용 VC
+        let vc = LeftoverVC()
+        vc.testlabel.text = "@@is leftoverhome vc"
         self.navigationController.pushViewController(vc, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: OneStepper(withSingleStep: LeftoverStep.leftoverHomeIsRequired)))
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: viewModel))
     }
     
     private func nextVCPresent() -> FlowContributors {
-        let vc = DetailViewController()
-        vc.view.backgroundColor = .white
-        self.navigationController.present(vc, animated: true)
+        let vc = TestVC()
+        vc.view.backgroundColor = .green
+        self.navigationController.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: viewModel))
     }
 }

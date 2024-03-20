@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailViewModel {
-    var title: String
-    
-}
+//struct DetailViewModel {
+//    var title: String
+//    
+//}

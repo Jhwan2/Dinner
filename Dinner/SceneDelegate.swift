@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         
         let appFlow = AppFlow() // 가장큰 앱 단위의 AppFlow생성
 
-        self.coordinator.coordinate(flow: appFlow, with: TestStepper()) // appflow의 초기 step 설정
+        self.coordinator.coordinate(flow: appFlow, with: AppStepper()) // appflow의 초기 step 설정
         
         Flows.use(appFlow, when: .created) { root in // appFlow 시작
             window.rootViewController = root // appFlow 내부에 있는 navigationController를 앱 rootViewController 으로 설정

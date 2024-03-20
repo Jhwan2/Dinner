@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class ArticleViewModel: Stepper {
+class HomeVM: Stepper {
     
     var steps: PublishRelay<Step> = .init()
     
