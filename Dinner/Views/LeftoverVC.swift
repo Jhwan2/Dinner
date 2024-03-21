@@ -55,7 +55,6 @@ class LeftoverVC: UIViewController {
         button.rx.tap
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
-                print("버튼눌렷어 1번")
                 self.viewModel.steps.accept(AppSteps.leftoverIsRequired)
             }
             .disposed(by: disposeBag)
