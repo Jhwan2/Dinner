@@ -30,10 +30,10 @@ class HomeVC: UIViewController {
             $0.font = .systemFont(ofSize: 20)
         }
         self.button.do {
-            $0.setTitle("NextVC1", for: .normal)
+            $0.setTitle("Leftover", for: .normal)
         }
         self.button2.do {
-            $0.setTitle("NextVC2", for: .normal)
+            $0.setTitle("To home", for: .normal)
         }
         [testlabel, button, button2].forEach {
             view.addSubview($0)
@@ -55,6 +55,7 @@ class HomeVC: UIViewController {
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.steps.accept(AppSteps.leftoverIsRequired)
+                print("leftover 뷰 이동")
             }
             .disposed(by: disposeBag)
         
@@ -62,6 +63,7 @@ class HomeVC: UIViewController {
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.steps.accept(AppSteps.homeIsRequired)
+                print("홈으로")
             }
             .disposed(by: disposeBag)
         

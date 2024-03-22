@@ -27,9 +27,9 @@ final class AppFlow: Flow { // 전체 AppFlow
         case .OnboardingIsRequired:
             return navigateToOnboardingFlow() //추후 온보딩용
         case .deliveryIsRequired:
-            return navigateToDeliveryFlow()
+            return navigateToDeliveryFlow() // 배달음식 추천
         case .leftoverIsRequired:
-            return navigateToLeftoverFlow()
+            return navigateToLeftoverFlow() // 남은 재료기반 추천
         case .historyIsRequired:
             return .none
         }
@@ -69,7 +69,7 @@ final class AppFlow: Flow { // 전체 AppFlow
         let leftoverFlow = LeftoverFlow(viewModel: viewModel)
         leftoverVC.bindViewModel(viewModel: viewModel)
         
-        Driver.just("now is Home in HomeFlow")
+        Driver.just("now is Home in LeftoverFlow")
             .drive(onNext: { st in
                 leftoverVC.testlabel.text = st
             })
@@ -92,3 +92,4 @@ final class AppFlow: Flow { // 전체 AppFlow
     }
     
 }
+

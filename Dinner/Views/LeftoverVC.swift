@@ -62,7 +62,7 @@ class LeftoverVC: UIViewController {
         button2.rx.tap
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
-                self.viewModel.steps.accept(AppSteps.homeIsRequired)
+//                self.viewModel.steps.accept(AppSteps.homeIsRequired)
             }
             .disposed(by: disposeBag)
         
