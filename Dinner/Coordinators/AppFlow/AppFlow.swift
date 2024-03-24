@@ -16,7 +16,11 @@ final class AppFlow: Flow { // 전체 AppFlow
         return self.rootViewController
     }
     
-    private lazy var rootViewController = UINavigationController() // 현재 rootViewController 채택
+    private lazy var rootViewController: UINavigationController = {
+        var navi = UINavigationController()
+        navi.navigationBar.largeContentTitle = "ddddd"
+        return navi
+    }() // 현재 rootViewController 채택
     
     func navigate(to step: Step) -> FlowContributors { // Sence에서 보내준 TestStepper로 인해 초기 homeIsRequired로 날라옴
         guard let step = step as? AppSteps else { return .none }

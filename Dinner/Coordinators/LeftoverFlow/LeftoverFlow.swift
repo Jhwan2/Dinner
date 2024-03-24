@@ -12,7 +12,7 @@ import RxFlow
 
 class LeftoverFlow: Flow { //남은재료Flow
     
-    private let navigationController = UINavigationController()
+    private var navigationController = UINavigationController()
     
     let viewModel: LeftoverViewModel // Stepper역할
     
