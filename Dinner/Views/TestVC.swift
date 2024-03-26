@@ -26,6 +26,7 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.testlabel.do {
+            $0.text = "Test VC"
             $0.textColor = .black
             $0.font = .systemFont(ofSize: 20)
         }
@@ -54,14 +55,14 @@ class TestVC: UIViewController {
         button.rx.tap
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
-                self.viewModel.steps.accept(AppSteps.leftoverIsRequired)
+                self.viewModel.steps.accept(LeftoverStep.leftoverNextIsRequired)
             }
             .disposed(by: disposeBag)
         
         button2.rx.tap
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
-                self.viewModel.steps.accept(AppSteps.homeIsRequired)
+                self.viewModel.steps.accept(LeftoverStep.leftoverHomeIsRequired)
             }
             .disposed(by: disposeBag)
         

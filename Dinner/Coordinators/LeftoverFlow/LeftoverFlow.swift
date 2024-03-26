@@ -12,7 +12,7 @@ import RxFlow
 
 class LeftoverFlow: Flow { //남은재료Flow
     
-    private var navigationController = UINavigationController()
+    private var viewController: UIViewController = LeftoverVC()
     
     let viewModel: LeftoverViewModel // Stepper역할
     
@@ -21,12 +21,12 @@ class LeftoverFlow: Flow { //남은재료Flow
     }
     
     var root: Presentable {
-        return self.navigationController
+        return self.viewController
     }
     
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? LeftoverStep else { return .none }
-        navigationController.navigationItem.title = "LeftFlow"
+//        navigationController.navigationItem.title = "LeftFlow"
         switch step {
         case .leftoverHomeIsRequired:
             return homeVCPresent()
@@ -38,16 +38,15 @@ class LeftoverFlow: Flow { //남은재료Flow
     
     private func homeVCPresent() -> FlowContributors {
         print(#function)
-        let vc = LeftoverVC()
-        vc.testlabel.text = "@@is leftoverhome vc"
-        self.navigationController.pushViewController(vc, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: viewModel))
+//        viewController.testlabel.text = "@@is leftoverhome vc"
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewModel))
     }
     
     private func nextVCPresent() -> FlowContributors {
         let vc = TestVC()
         vc.view.backgroundColor = .green
-        self.navigationController.pushViewController(vc, animated: true)
+//        self.navigationController.pushViewController(vc, animated: true)
+        self.viewController = vc
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: viewModel))
     }
 }

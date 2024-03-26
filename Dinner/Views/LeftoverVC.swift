@@ -55,14 +55,14 @@ class LeftoverVC: UIViewController {
         button.rx.tap
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
-                self.viewModel.steps.accept(AppSteps.leftoverIsRequired)
+                self.viewModel.steps.accept(LeftoverStep.leftoverNextIsRequired)
             }
             .disposed(by: disposeBag)
     
         button2.rx.tap
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
-//                self.viewModel.steps.accept(AppSteps.homeIsRequired)
+                self.viewModel.steps.accept(LeftoverStep.leftoverHomeIsRequired)
             }
             .disposed(by: disposeBag)
         

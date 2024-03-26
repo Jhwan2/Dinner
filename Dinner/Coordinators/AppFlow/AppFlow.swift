@@ -80,7 +80,7 @@ final class AppFlow: Flow { // 전체 AppFlow
             .disposed(by: disposeBag)
         
         Flows.use(leftoverFlow, when: .created) { [unowned self] root in
-            self.rootViewController = root as! UINavigationController
+            self.rootViewController.pushViewController(root, animated: true)
         }
         return .one(flowContributor: .contribute(withNextPresentable: leftoverFlow, withNextStepper: viewModel))
     }
